@@ -17,7 +17,7 @@ public class ItemController {
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
     }
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin(origins = "http://localhost:3000") // Allow CORS policy
     @GetMapping()
     public List<Item> getAllItems() {
         return itemService.getAllItems();
