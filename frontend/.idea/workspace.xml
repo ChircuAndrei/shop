@@ -7,6 +7,15 @@
     <list default="true" id="c80f49e3-ea3a-4599-8729-8bf87fd5c3c6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/codecool/onlineshop/databaseInitialization/DataInitialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/codecool/onlineshop/databaseInitialization/DataInitialization.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/codecool/onlineshop/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/codecool/onlineshop/service/ItemService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/dashboard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/dashboard/index.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/global/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/global/Sidebar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/global/Topbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/global/Topbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,9 +35,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2WAqY4Q23YL5u7FKguMQbiV5dUB" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -37,21 +46,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "adminDashboard",
-    "last_opened_file_path": "/Users/macbook/Documents/Codecool/Advanced - Java Spring/Teamwork/el-proyecte-grande-sprint-1-java-ChircuAndrei/frontend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;adminDashboard&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/macbook/Documents/Codecool/Advanced - Java Spring/Teamwork/el-proyecte-grande-sprint-1-java-ChircuAndrei/frontend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -61,6 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696185777164</updated>
       <workItem from="1696185778591" duration="2072000" />
+      <workItem from="1696195440967" duration="1800000" />
     </task>
     <servers />
   </component>
