@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c80f49e3-ea3a-4599-8729-8bf87fd5c3c6" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/codecool/onlineshop/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/codecool/onlineshop/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/codecool/onlineshop/databaseInitialization/DataInitialization.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/codecool/onlineshop/databaseInitialization/DataInitialization.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../backend/src/main/java/com/codecool/onlineshop/service/ItemService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../backend/src/main/java/com/codecool/onlineshop/service/ItemService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/@rushstack/eslint-patch/lib/modern-module-resolution.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/@rushstack/eslint-patch/lib/modern-module-resolution.d.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/dashboard/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/dashboard/index.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/global/Sidebar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/global/Sidebar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/scenes/global/Topbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/global/Topbar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/theme.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/scenes/team/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/scenes/users/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +66,7 @@
       <option name="presentableId" value="Default" />
       <updated>1696185777164</updated>
       <workItem from="1696185778591" duration="2072000" />
-      <workItem from="1696195440967" duration="1800000" />
+      <workItem from="1696195440967" duration="5300000" />
     </task>
     <servers />
   </component>

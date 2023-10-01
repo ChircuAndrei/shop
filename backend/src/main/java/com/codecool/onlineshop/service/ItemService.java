@@ -47,13 +47,13 @@ public class ItemService {
         return itemRepository.save(item);
     }
 
-    @Transactional
-    public void generateAndInsertRandomItems() {
-        IntStream.rangeClosed(1, 10).forEach(i -> {
-            Item item = createRandomItem();
-            itemRepository.save(item);
-        });
-    }
+//    @Transactional
+//    public void generateAndInsertRandomItems() {
+//        IntStream.rangeClosed(1, 10).forEach(i -> {
+//            Item item = createRandomItem();
+//            itemRepository.save(item);
+//        });
+//    }
 
     private Item createRandomItem() {
         String randomName = generateRandomName();

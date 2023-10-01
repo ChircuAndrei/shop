@@ -1,29 +1,42 @@
 import { Box, Typography, useTheme } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataTeam } from "../../data/mockData";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
+import {useEffect, useState} from "react";
 
-const Team = () => {
+const fetchUsers = async () => {
+    try {
+        const response = await fetch(`http://localhost:8080/users`);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return await response.json();
+    } catch (error) {
+        console.error('Error fetching users:', error);
+        return [];
+    }
+};
+
+
+const Users = () => {
+    const [users, setUsers] = useState([]);
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const columns = [
         { field: "id", headerName: "ID" },
         {
-            field: "name",
-            headerName: "Name",
+            field: "username",
+            headerName: "Username",
             flex: 1,
             cellClassName: "name-column--cell",
         },
         {
-            field: "age",
-            headerName: "Age",
-            type: "number",
-            headerAlign: "left",
-            align: "left",
+            field: "address",
+            headerName: "Address",
+            flex: 1,
         },
         {
             field: "phone",
@@ -68,9 +81,18 @@ const Team = () => {
         },
     ];
 
+    useEffect(() => {
+        const fetchData = async () => {
+            const usersData = await fetchUsers();
+            setUsers(usersData)
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <Box m="20px">
-            <Header title="TEAM" subtitle="Managing the Team Members" />
+            <Header title="USERS" subtitle="Managing the Users" />
             <Box
                 m="40px 0 0 0"
                 height="75vh"
@@ -100,10 +122,10 @@ const Team = () => {
                     },
                 }}
             >
-                <DataGrid checkboxSelection rows={mockDataTeam} columns={columns} />
+                <DataGrid checkboxSelection rows={users} columns={columns} />
             </Box>
         </Box>
     );
 };
 
-export default Team;
+export default Users;
