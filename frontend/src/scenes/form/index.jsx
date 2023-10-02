@@ -1,14 +1,27 @@
+import * as React from 'react';
 import { Box, Button, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import Header from "../../components/Header";
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
 const Form = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
 
     const handleFormSubmit = (values) => {
         console.log(values);
+    };
+
+    const [showPassword, setShowPassword] = React.useState(false);
+
+    const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+    const handleMouseDownPassword = (event) => {
+        event.preventDefault();
     };
 
     return (
@@ -41,26 +54,26 @@ const Form = () => {
                                 fullWidth
                                 variant="filled"
                                 type="text"
-                                label="First Name"
+                                label="Name"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                value={values.firstName}
-                                name="firstName"
-                                error={!!touched.firstName && !!errors.firstName}
-                                helperText={touched.firstName && errors.firstName}
+                                value={values.name}
+                                name="name"
+                                error={!!touched.name && !!errors.name}
+                                helperText={touched.name && errors.name}
                                 sx={{ gridColumn: "span 2" }}
                             />
                             <TextField
                                 fullWidth
                                 variant="filled"
                                 type="text"
-                                label="Last Name"
+                                label="Username"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                value={values.lastName}
-                                name="lastName"
-                                error={!!touched.lastName && !!errors.lastName}
-                                helperText={touched.lastName && errors.lastName}
+                                value={values.username}
+                                name="username"
+                                error={!!touched.username && !!errors.username}
+                                helperText={touched.username && errors.username}
                                 sx={{ gridColumn: "span 2" }}
                             />
                             <TextField
@@ -79,40 +92,54 @@ const Form = () => {
                             <TextField
                                 fullWidth
                                 variant="filled"
-                                type="text"
-                                label="Contact Number"
+                                type={showPassword ? "text" : "password"}
+                                label="Password"
+                                InputProps={{
+                                    endAdornment: (
+                                        <InputAdornment position="end">
+                                            <IconButton
+                                                aria-label="toggle password visibility"
+                                                onClick={handleClickShowPassword}
+                                                onMouseDown={handleMouseDownPassword}
+                                                edge="end"
+                                            >
+                                                {showPassword ? <VisibilityOff /> : <Visibility />}
+                                            </IconButton>
+                                        </InputAdornment>
+                                    ),
+                                }}
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                value={values.contact}
-                                name="contact"
-                                error={!!touched.contact && !!errors.contact}
-                                helperText={touched.contact && errors.contact}
+                                value={values.password}
+                                name="password"
+                                error={!!touched.password && !!errors.password}
+                                helperText={touched.password && errors.password}
                                 sx={{ gridColumn: "span 4" }}
                             />
                             <TextField
                                 fullWidth
                                 variant="filled"
                                 type="text"
-                                label="Address 1"
+                                label="Address"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                value={values.address1}
-                                name="address1"
-                                error={!!touched.address1 && !!errors.address1}
-                                helperText={touched.address1 && errors.address1}
+                                value={values.address}
+                                name="address"
+                                error={!!touched.address && !!errors.address}
+                                helperText={touched.address && errors.address}
                                 sx={{ gridColumn: "span 4" }}
                             />
                             <TextField
                                 fullWidth
                                 variant="filled"
                                 type="text"
-                                label="Address 2"
+                                label="Phone number"
                                 onBlur={handleBlur}
                                 onChange={handleChange}
-                                value={values.address2}
-                                name="address2"
-                                error={!!touched.address2 && !!errors.address2}
-                                helperText={touched.address2 && errors.address2}
+                                value={values.phoneNumber}
+                                name="phoneNumber"
+                                error={!!touched.phoneNumber && !!errors.phoneNumber}
+                                helperText={touched.phoneNumber && errors.phoneNumber}
                                 sx={{ gridColumn: "span 4" }}
                             />
                         </Box>
@@ -132,23 +159,23 @@ const phoneRegExp =
     /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
 
 const checkoutSchema = yup.object().shape({
-    firstName: yup.string().required("required"),
-    lastName: yup.string().required("required"),
+    name: yup.string().required("required"),
+    username: yup.string().required("required"),
     email: yup.string().email("invalid email").required("required"),
+    password: yup.string().required("required"),
+    address: yup.string().required("required"),
     contact: yup
         .string()
         .matches(phoneRegExp, "Phone number is not valid")
         .required("required"),
-    address1: yup.string().required("required"),
-    address2: yup.string().required("required"),
 });
 const initialValues = {
-    firstName: "",
-    lastName: "",
+    name: "",
+    username: "",
     email: "",
-    contact: "",
-    address1: "",
-    address2: "",
+    password: "",
+    address: "",
+    phoneNumber: "",
 };
 
 export default Form;
