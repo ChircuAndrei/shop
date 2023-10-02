@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -20,7 +21,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    @CrossOrigin(origins = "*")
     @GetMapping()
     public List<User> getAllUsers() {
         return userService.getAllUsers();

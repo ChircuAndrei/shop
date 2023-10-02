@@ -12,8 +12,24 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 const Form = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
 
-    const handleFormSubmit = (values) => {
-        console.log(values);
+    const handleFormSubmit = async (values) => {
+        try {
+            const response = await fetch('http://localhost:8080/users', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(values),
+            });
+
+            if (response.ok) {
+                console.log('Form data submitted successfully.');
+            } else {
+                console.error('Error submitting form data.');
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
     };
 
     const [showPassword, setShowPassword] = React.useState(false);
@@ -164,7 +180,7 @@ const checkoutSchema = yup.object().shape({
     email: yup.string().email("invalid email").required("required"),
     password: yup.string().required("required"),
     address: yup.string().required("required"),
-    contact: yup
+    phoneNumber: yup
         .string()
         .matches(phoneRegExp, "Phone number is not valid")
         .required("required"),

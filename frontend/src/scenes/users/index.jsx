@@ -39,7 +39,7 @@ const Users = () => {
             flex: 1,
         },
         {
-            field: "phone",
+            field: "phoneNumber",
             headerName: "Phone Number",
             flex: 1,
         },
