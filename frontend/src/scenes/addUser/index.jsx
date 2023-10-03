@@ -8,9 +8,11 @@ import IconButton from '@mui/material/IconButton';
 import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { useNavigate } from 'react-router-dom';
 
 const AddUser = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
+    const navigate = useNavigate();
 
     const handleFormSubmit = async (values) => {
         try {
@@ -24,6 +26,7 @@ const AddUser = () => {
 
             if (response.ok) {
                 console.log('Form data submitted successfully.');
+                navigate("/users")
             } else {
                 console.error('Error submitting addUser data.');
             }
