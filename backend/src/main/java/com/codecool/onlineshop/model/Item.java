@@ -16,6 +16,6 @@ public class Item {
     private Long id;
     private String name;
     private Long price;
-    private String imagePath = "src/main/resources/imagePath/missing-image.png";
+    private String imagePath;
 
 }

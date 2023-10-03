@@ -52,7 +52,7 @@ const Users = () => {
             field: "accessLevel",
             headerName: "Access Level",
             flex: 1,
-            renderCell: ({ row: { access } }) => {
+            renderCell: ({ row: { role } }) => {
                 return (
                     <Box
                         width="60%"
@@ -61,19 +61,19 @@ const Users = () => {
                         display="flex"
                         justifyContent="center"
                         backgroundColor={
-                            access === "admin"
+                            role === "admin"
                                 ? colors.greenAccent[600]
-                                : access === "manager"
+                                : role === "manager"
                                     ? colors.greenAccent[700]
                                     : colors.greenAccent[700]
                         }
                         borderRadius="4px"
                     >
-                        {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
-                        {access === "manager" && <SecurityOutlinedIcon />}
-                        {access === "user" && <LockOpenOutlinedIcon />}
+                        {role === "admin" && <AdminPanelSettingsOutlinedIcon />}
+                        {role === "manager" && <SecurityOutlinedIcon />}
+                        {role === "user" && <LockOpenOutlinedIcon />}
                         <Typography color={colors.grey[100]} sx={{ ml: "5px" }}>
-                            {access}
+                            {role}
                         </Typography>
                     </Box>
                 );
@@ -84,11 +84,20 @@ const Users = () => {
     useEffect(() => {
         const fetchData = async () => {
             const usersData = await fetchUsers();
+            parseRoles(usersData)
             setUsers(usersData)
         };
 
         fetchData();
     }, []);
+
+    const parseRoles = (userList) => {
+        userList.forEach(user => {
+            if (user.role === null || user.role === "USER") user.role = "user";
+            if (user.role === "MANAGER") user.role = "manager";
+            if (user.role === "ADMIN") user.role = "admin";
+        })
+    }
 
     return (
         <Box m="20px">

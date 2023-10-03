@@ -1,5 +1,6 @@
 package com.codecool.onlineshop.model;
 
+import com.codecool.onlineshop.enums.Roles;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -25,9 +26,10 @@ public class User {
     private String address;
     private String phoneNumber;
     private String paymentInfo;
-    private String imagePath = "src/main/resources/imagePath/missing-image.png";
+    private String imagePath;
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Cart> carts = new ArrayList<>();
+    private Roles role;
 
     @Override
     public String toString() {

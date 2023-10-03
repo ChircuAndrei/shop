@@ -1,4 +1,5 @@
 package com.codecool.onlineshop.service;
+import com.codecool.onlineshop.enums.Roles;
 import com.codecool.onlineshop.exceptions.UserNotFoundException;
 import com.codecool.onlineshop.model.User;
 import com.codecool.onlineshop.repository.UsersRepository;
@@ -19,6 +20,7 @@ public class UserService {
     }
 
     public void addUser(User user) {
+        user.setRole(Roles.USER);
         usersRepository.save(user);
     }
 
@@ -46,6 +48,7 @@ public class UserService {
         user.setPhoneNumber(updatedUser.getPhoneNumber());
         user.setPaymentInfo(updatedUser.getPaymentInfo());
         user.setImagePath(updatedUser.getImagePath());
+        user.setRole(updatedUser.getRole());
 
         return usersRepository.save(user);
     }
