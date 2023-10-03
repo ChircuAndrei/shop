@@ -1,11 +1,12 @@
-import { Box, Typography, useTheme } from "@mui/material";
+import {Box, Button, Typography, useTheme} from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const fetchUsers = async () => {
     try {
@@ -23,6 +24,7 @@ const fetchUsers = async () => {
 
 const Users = () => {
     const [users, setUsers] = useState([]);
+    const navigate = useNavigate();
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const columns = [
@@ -99,9 +101,30 @@ const Users = () => {
         })
     }
 
+    const addUser = () => {
+        navigate("/add-user")
+    }
+
     return (
         <Box m="20px">
-            <Header title="USERS" subtitle="Managing the Users" />
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Header title="USERS" subtitle="Managing the Users" />
+
+                <Box>
+                    <Button
+                        sx={{
+                            backgroundColor: colors.blueAccent[700],
+                            color: colors.grey[100],
+                            fontSize: "14px",
+                            fontWeight: "bold",
+                            padding: "10px 20px",
+                        }}
+                        onClick={() => addUser()}
+                    >
+                        Add User
+                    </Button>
+                </Box>
+            </Box>
             <Box
                 m="40px 0 0 0"
                 height="75vh"

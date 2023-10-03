@@ -9,7 +9,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
-const Form = () => {
+const AddUser = () => {
     const isNonMobile = useMediaQuery("(min-width:600px)");
 
     const handleFormSubmit = async (values) => {
@@ -25,7 +25,7 @@ const Form = () => {
             if (response.ok) {
                 console.log('Form data submitted successfully.');
             } else {
-                console.error('Error submitting form data.');
+                console.error('Error submitting addUser data.');
             }
         } catch (error) {
             console.error('An error occurred:', error);
@@ -194,4 +194,4 @@ const initialValues = {
     phoneNumber: "",
 };
 
-export default Form;
+export default AddUser;
