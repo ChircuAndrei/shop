@@ -1,7 +1,9 @@
-import {Box, Button, Typography, useTheme} from "@mui/material";
+import {Box, Button, ButtonGroup, Typography, useTheme} from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
@@ -81,6 +83,24 @@ const Users = () => {
                 );
             },
         },
+        {
+            field: "actions",
+            headerName: "Actions",
+            flex: 1,
+            renderCell: (params) => {
+                const { id, username, address, phoneNumber, email, accessLevel } = params.row;
+
+                return (
+                    <ButtonGroup
+                        variant="contained"
+                        aria-label="outlined primary button group"
+                    >
+                        <Button variant="contained" startIcon={<EditIcon />} />
+                        <Button onClick={() => handleDeleteSubmit(id)} variant="contained" startIcon={<DeleteIcon />} />
+                    </ButtonGroup>
+                );
+            },
+        },
     ];
 
     useEffect(() => {
@@ -104,6 +124,27 @@ const Users = () => {
     const addUser = () => {
         navigate("/add-user")
     }
+
+    const handleDeleteSubmit = async (id) => {
+        try {
+            const response = await fetch('http://localhost:8080/users', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(id),
+            });
+    
+            if (response.ok) {
+                console.log('User removed successfully.');
+                setUsers((prevUsers) => prevUsers.filter((user) => user.id !== id));
+            } else {
+                console.error('Error submitting deleteUser.');
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    };
 
     return (
         <Box m="20px">
@@ -154,7 +195,7 @@ const Users = () => {
                     },
                 }}
             >
-                <DataGrid checkboxSelection rows={users} columns={columns} />
+                <DataGrid rows={users} columns={columns} />
             </Box>
         </Box>
     );

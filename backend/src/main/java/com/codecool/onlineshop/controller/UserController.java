@@ -37,8 +37,8 @@ public class UserController {
    public Optional<User> getRoomById(@PathVariable Long userId) {
        return userService.getUserById(userId);
    }
-    @DeleteMapping("/{userId}")
-    public void deleteUser(@PathVariable Long userId) {
+    @DeleteMapping()
+    public void deleteUser(@RequestBody Long userId) {
         userService.deleteUserById(userId);
     }
 
