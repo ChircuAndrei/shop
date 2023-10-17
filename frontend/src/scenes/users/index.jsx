@@ -4,6 +4,12 @@ import { tokens } from "../../theme";
 import AdminPanelSettingsOutlinedIcon from "@mui/icons-material/AdminPanelSettingsOutlined";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+import TextField from '@mui/material/TextField';
 import LockOpenOutlinedIcon from "@mui/icons-material/LockOpenOutlined";
 import SecurityOutlinedIcon from "@mui/icons-material/SecurityOutlined";
 import Header from "../../components/Header";
@@ -26,6 +32,8 @@ const fetchUsers = async () => {
 
 const Users = () => {
     const [users, setUsers] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [selectedUser, setSelectedUser] = useState(null);
     const navigate = useNavigate();
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -88,20 +96,77 @@ const Users = () => {
             headerName: "Actions",
             flex: 1,
             renderCell: (params) => {
-                const { id, username, address, phoneNumber, email, accessLevel } = params.row;
+                const user = params.row;
 
                 return (
                     <ButtonGroup
                         variant="contained"
                         aria-label="outlined primary button group"
                     >
-                        <Button variant="contained" startIcon={<EditIcon />} />
-                        <Button onClick={() => handleDeleteSubmit(id)} variant="contained" startIcon={<DeleteIcon />} />
+                        <Button onClick={() => handleClickOpen(user)} variant="contained" startIcon={<EditIcon />} />
+                        <Dialog open={open} onClose={handleClose}>
+                            <DialogTitle>Edit</DialogTitle>
+                                <DialogContent>
+                                <DialogContentText>
+                                    Please input new details!
+                                </DialogContentText>
+                                <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    id="username"
+                                    label={selectedUser?.username}
+                                    type="text"
+                                    fullWidth
+                                    variant="standard"
+                                />
+                                <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    id="address"
+                                    label={selectedUser?.address}
+                                    type="text"
+                                    fullWidth
+                                    variant="standard"
+                                />
+                                <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    id="phoneNumber"
+                                    label={selectedUser?.phoneNumber}
+                                    type="text"
+                                    fullWidth
+                                    variant="standard"
+                                />
+                                <TextField
+                                    autoFocus
+                                    margin="dense"
+                                    id="name"
+                                    label={selectedUser?.email}
+                                    type="email"
+                                    fullWidth
+                                    variant="standard"
+                                />
+                                </DialogContent>
+                                <DialogActions>
+                                <Button onClick={handleClose}>Cancel</Button>
+                                <Button onClick={handleClose}>Edit</Button>
+                                </DialogActions>
+                            </Dialog>
+                        <Button onClick={() => handleDeleteSubmit(user.id)} variant="contained" startIcon={<DeleteIcon />} />
                     </ButtonGroup>
                 );
             },
         },
     ];
+
+    const handleClickOpen = (user) => {
+        setSelectedUser(user)
+        setOpen(true);
+    };
+    
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -145,6 +210,7 @@ const Users = () => {
             console.error('An error occurred:', error);
         }
     };
+
 
     return (
         <Box m="20px">
