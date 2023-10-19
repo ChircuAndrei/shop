@@ -8,11 +8,14 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import CheckBoxRoundedIcon from '@mui/icons-material/CheckBoxRounded';
+import IndeterminateCheckBoxRoundedIcon from '@mui/icons-material/IndeterminateCheckBoxRounded';
 import TextField from '@mui/material/TextField';
 import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { boolean } from "yup";
 
 const fetchItems = async () => {
     try {
@@ -27,7 +30,7 @@ const fetchItems = async () => {
     }
 };
 
-const Products = () => {
+const Items = () => {
     const [items, setItems] = useState([]);
     const [open, setOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
@@ -70,6 +73,13 @@ const Products = () => {
             headerAlign: "center",
             align: "center",
             flex: 1,
+            renderCell: (params) => {
+                const item = params.row;
+
+                return (
+                    item.visibility ? <CheckBoxRoundedIcon /> : <IndeterminateCheckBoxRoundedIcon />
+                );
+            }
         },
         {
             field: "actions",
@@ -281,4 +291,4 @@ const Products = () => {
     );
 };
 
-export default Products;
+export default Items;

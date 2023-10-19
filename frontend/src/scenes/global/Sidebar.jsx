@@ -140,8 +140,8 @@ const Sidebar = () => {
               setSelected={setSelected}
             />
             <Item
-              title="Products"
-              to="/products"
+              title="Items"
+              to="/items"
               icon={<SellIcon />}
               selected={selected}
               setSelected={setSelected}
