@@ -34,6 +34,7 @@ const Users = () => {
     const [users, setUsers] = useState([]);
     const [open, setOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState(null);
+    const [editedUser, setEditedUser] = useState({});
     const navigate = useNavigate();
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
@@ -114,42 +115,50 @@ const Users = () => {
                                     autoFocus
                                     margin="dense"
                                     id="username"
-                                    label={selectedUser?.username}
+                                    label="Username"
                                     type="text"
                                     fullWidth
                                     variant="standard"
+                                    value={editedUser.username}
+                                    onChange={(event) => handleFieldChange(event, 'username')}
                                 />
                                 <TextField
                                     autoFocus
                                     margin="dense"
                                     id="address"
-                                    label={selectedUser?.address}
+                                    label="Address"
                                     type="text"
                                     fullWidth
                                     variant="standard"
+                                    value={editedUser.address}
+                                    onChange={(event) => handleFieldChange(event, 'address')}
                                 />
                                 <TextField
                                     autoFocus
                                     margin="dense"
                                     id="phoneNumber"
-                                    label={selectedUser?.phoneNumber}
+                                    label="Phone number"
                                     type="text"
                                     fullWidth
                                     variant="standard"
+                                    value={editedUser.phoneNumber}
+                                    onChange={(event) => handleFieldChange(event, 'phoneNumber')}
                                 />
                                 <TextField
                                     autoFocus
                                     margin="dense"
-                                    id="name"
-                                    label={selectedUser?.email}
+                                    id="email"
+                                    label="Email"
                                     type="email"
                                     fullWidth
                                     variant="standard"
+                                    value={editedUser.email}
+                                    onChange={(event) => handleFieldChange(event, 'email')}
                                 />
                                 </DialogContent>
                                 <DialogActions>
                                 <Button onClick={handleClose}>Cancel</Button>
-                                <Button onClick={handleClose}>Edit</Button>
+                                <Button onClick={() => handleEdit(user)}>Edit</Button>
                                 </DialogActions>
                             </Dialog>
                         <Button onClick={() => handleDeleteSubmit(user.id)} variant="contained" startIcon={<DeleteIcon />} />
@@ -161,10 +170,54 @@ const Users = () => {
 
     const handleClickOpen = (user) => {
         setSelectedUser(user)
+        setEditedUser({
+            username: user.username,
+            address: user.address,
+            phoneNumber: user.phoneNumber,
+            email: user.email,
+        });
         setOpen(true);
     };
     
     const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleFieldChange = (event, fieldName) => {
+        const { value } = event.target;
+
+        setEditedUser((prevEditedUser) => ({
+            ...prevEditedUser,
+            [fieldName]: value,
+        }));
+    };
+    
+
+    const handleEdit = async (user) => {
+
+        user.username = editedUser.username;
+        user.address = editedUser.address;
+        user.phoneNumber = editedUser.phoneNumber;
+        user.email = editedUser.email;
+        try {
+            user.role = user.role.toUpperCase();
+            const response = await fetch('http://localhost:8080/users/' + user.id, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user),
+            });
+    
+            if (response.ok) {
+                console.log('User updated successfully.');
+            } else {
+                console.error('Error submitting deleteUser.');
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+        user.role = user.role.toLowerCase();
         setOpen(false);
     };
 
