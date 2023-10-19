@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/items")
 public class ItemController {
@@ -17,7 +18,6 @@ public class ItemController {
     public ItemController(ItemService itemService) {
         this.itemService = itemService;
     }
-    @CrossOrigin(origins = "http://localhost:3000") // Allow CORS policy
     @GetMapping()
     public List<Item> getAllItems() {
         return itemService.getAllItems();
@@ -26,6 +26,11 @@ public class ItemController {
     @PostMapping
     public void addItem(@RequestBody Item item) {
         itemService.addItem(item);
+    }
+
+    @PostMapping("/add-items")
+    public void addItems(@RequestBody List<Item> items) {
+        itemService.addItems(items);
     }
 
     @GetMapping("/{itemId}")

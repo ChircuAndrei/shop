@@ -3,6 +3,7 @@ package com.codecool.onlineshop.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Type;
 
 @Getter
 @Setter
@@ -17,5 +18,9 @@ public class Item {
     private String name;
     private Long price;
     private String imagePath;
+    private String category;
+    private String description;
+    @Column(columnDefinition = "BOOLEAN")
+    private boolean visibility;
 
 }

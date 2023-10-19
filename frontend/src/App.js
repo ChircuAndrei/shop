@@ -5,7 +5,7 @@ import Sidebar from "./scenes/global/Sidebar";
 import Dashboard from "./scenes/dashboard";
 import Users from "./scenes/users";
 import Invoices from "./scenes/invoices";
-import Contacts from "./scenes/contacts";
+import Products from "./scenes/products";
 import Bar from "./scenes/bar";
 import AddUser from "./scenes/addUser";
 import Line from "./scenes/line";
@@ -35,9 +35,9 @@ function App() {
             <main className="content">
               <Topbar setIsSidebar={setIsSidebar} />
               <Routes>
-                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/" element={<Dashboard />} />
                 <Route path="/users" element={<Users />} />
-                <Route path="/contacts" element={<Contacts />} />
+                <Route path="/products" element={<Products />} />
                 <Route path="/invoices" element={<Invoices />} />
                 <Route path="/add-user" element={<AddUser />} />
                 <Route path="/edit-user" element={<AddUser />} />
