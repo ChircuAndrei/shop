@@ -37,6 +37,7 @@ const Items = () => {
     const [selectedItem, setSelectedItem] = useState(null);
     const [editedItem, setEditedItem] = useState({});
     const theme = useTheme();
+    const navigate = useNavigate();
     const colors = tokens(theme.palette.mode);
 
     const columns = [
@@ -266,6 +267,10 @@ const Items = () => {
         }
     };
 
+    const addItem = () => {
+        navigate("/add-item")
+    }
+
 
     useEffect(() => {
         const fetchData = async () => {
@@ -285,10 +290,24 @@ const Items = () => {
 
     return (
         <Box m="20px">
-            <Header
-                title="PRODUCTS"
-                subtitle="Here you can see and edit all your products"
-            />
+            <Box display="flex" justifyContent="space-between" alignItems="center">
+                <Header title="ITEMS" subtitle="Here you can see and manage all your items" />
+
+                <Box>
+                    <Button
+                        sx={{
+                            backgroundColor: colors.blueAccent[700],
+                            color: colors.grey[100],
+                            fontSize: "14px",
+                            fontWeight: "bold",
+                            padding: "10px 20px",
+                        }}
+                        onClick={() => addItem()}
+                    >
+                        Add Item
+                    </Button>
+                </Box>
+            </Box>
             <Box
                 m="40px 0 0 0"
                 height="75vh"
