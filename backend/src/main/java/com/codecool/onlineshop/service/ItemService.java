@@ -48,7 +48,6 @@ public class ItemService {
         item.setImagePath(updatedItem.getImagePath());
         item.setCategory(updatedItem.getCategory());
         item.setDescription(updatedItem.getDescription());
-        item.setVisibility(updatedItem.isVisibility());
 
         return itemRepository.save(item);
     }

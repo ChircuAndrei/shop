@@ -23,4 +23,14 @@ public class Item {
     @Column(columnDefinition = "BOOLEAN")
     private boolean visibility;
 
+    @Override
+    public String toString() {
+        return "Id: " + id + "\n" +
+                "Name: " + name + "\n" +
+                "Price: " + price + "\n" +
+                "Category: " + category + "\n" +
+                "Description: " + description + "\n" +
+                "Visibility: " + visibility;
+    }
+
 }

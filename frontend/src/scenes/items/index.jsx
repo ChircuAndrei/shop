@@ -117,51 +117,50 @@ const Items = () => {
                                 <TextField
                                     autoFocus
                                     margin="dense"
-                                    id="username"
-                                    label="Username"
+                                    id="name"
+                                    label="Name"
                                     type="text"
                                     fullWidth
                                     variant="standard"
-                                    value={editedItem.username}
-                                    onChange={(event) => handleFieldChange(event, 'username')}
+                                    value={editedItem.name}
+                                    onChange={(event) => handleFieldChange(event, 'name')}
                                 />
                                 <TextField
                                     autoFocus
                                     margin="dense"
-                                    id="address"
-                                    label="Address"
+                                    id="price"
+                                    label="Price"
                                     type="text"
-                                    fullWidth
                                     variant="standard"
-                                    value={editedItem.address}
-                                    onChange={(event) => handleFieldChange(event, 'address')}
+                                    value={editedItem.price}
+                                    onChange={(event) => handleFieldChange(event, 'price')}
                                 />
                                 <TextField
                                     autoFocus
                                     margin="dense"
-                                    id="phoneNumber"
-                                    label="Phone number"
+                                    id="category"
+                                    label="Category"
                                     type="text"
                                     fullWidth
                                     variant="standard"
-                                    value={editedItem.phoneNumber}
-                                    onChange={(event) => handleFieldChange(event, 'phoneNumber')}
+                                    value={editedItem.category}
+                                    onChange={(event) => handleFieldChange(event, 'category')}
                                 />
                                 <TextField
                                     autoFocus
                                     margin="dense"
-                                    id="email"
-                                    label="Email"
-                                    type="email"
+                                    id="description"
+                                    label="Description"
+                                    type="text"
                                     fullWidth
                                     variant="standard"
-                                    value={editedItem.email}
-                                    onChange={(event) => handleFieldChange(event, 'email')}
+                                    value={editedItem.description}
+                                    onChange={(event) => handleFieldChange(event, 'description')}
                                 />
                                 </DialogContent>
                                 <DialogActions>
                                 <Button onClick={handleClose}>Cancel</Button>
-                                <Button onClick={() => handleEdit(item)}>Edit</Button>
+                                <Button onClick={() => handleEdit(selectedItem)}>Edit</Button>
                                 </DialogActions>
                             </Dialog>
                         <Button onClick={() => handleDeleteSubmit(item.id)} variant="contained" startIcon={<DeleteIcon />} />
@@ -198,10 +197,10 @@ const Items = () => {
     const handleClickOpen = (item) => {
         setSelectedItem(item)
         setEditedItem({
-            username: item.username,
-            address: item.address,
-            phoneNumber: item.phoneNumber,
-            email: item.email,
+            name: item.name,
+            price: item.price,
+            category: item.category,
+            description: item.description,
         });
         setOpen(true);
     };
@@ -220,20 +219,19 @@ const Items = () => {
     };
     
 
-    const handleEdit = async (user) => {
+    const handleEdit = async (item) => {
 
-        user.username = editedItem.username;
-        user.address = editedItem.address;
-        user.phoneNumber = editedItem.phoneNumber;
-        user.email = editedItem.email;
+        item.name = editedItem.name;
+        item.price = editedItem.price;
+        item.category = editedItem.category;
+        item.description = editedItem.description;
         try {
-            user.role = user.role.toUpperCase();
-            const response = await fetch('http://localhost:8080/users/' + user.id, {
+            const response = await fetch('http://localhost:8080/items/' + item.id, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(user),
+                body: JSON.stringify(item),
             });
     
             if (response.ok) {
@@ -244,7 +242,6 @@ const Items = () => {
         } catch (error) {
             console.error('An error occurred:', error);
         }
-        user.role = user.role.toLowerCase();
         setOpen(false);
     };
 
