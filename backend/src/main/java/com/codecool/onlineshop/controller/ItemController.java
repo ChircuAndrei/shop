@@ -25,6 +25,8 @@ public class ItemController {
 
     @PostMapping
     public void addItem(@RequestBody Item item) {
+        item.setImagePath("src/main/resources/imagePath/missing-image.png");
+        item.setVisibility(false);
         itemService.addItem(item);
     }
 
