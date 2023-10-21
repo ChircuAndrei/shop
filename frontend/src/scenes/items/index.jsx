@@ -78,9 +78,18 @@ const Items = () => {
                 const item = params.row;
 
                 return (
-                    <Button onClick={() => handleVisibilityToogleClick(item.id)} variant="contained" startIcon={
-                        visibilityState[item.id] ? <CheckBoxRoundedIcon /> : <IndeterminateCheckBoxRoundedIcon />
-                    } />
+                    <Button
+                        onClick={() => handleVisibilityToogleClick(item.id)}
+                        variant="contained"
+                        startIcon={
+                            visibilityState[item.id] ? <CheckBoxRoundedIcon /> : <IndeterminateCheckBoxRoundedIcon />
+                        }
+                        style={{
+                            backgroundColor: 'transparent',
+                            boxShadow: 'none',
+                            border: 'none',
+                        }}
+                    />
                 );
             }
         },
