@@ -32,6 +32,7 @@ const fetchItems = async () => {
 
 const Items = () => {
     const [items, setItems] = useState([]);
+    const [visibilityState, setVisibilityState] = useState({});
     const [open, setOpen] = useState(false);
     const [selectedItem, setSelectedItem] = useState(null);
     const [editedItem, setEditedItem] = useState({});
@@ -77,7 +78,9 @@ const Items = () => {
                 const item = params.row;
 
                 return (
-                    item.visibility ? <CheckBoxRoundedIcon /> : <IndeterminateCheckBoxRoundedIcon />
+                    <Button onClick={() => handleVisibilityToogleClick(item.id)} variant="contained" startIcon={
+                        visibilityState[item.id] ? <CheckBoxRoundedIcon /> : <IndeterminateCheckBoxRoundedIcon />
+                    } />
                 );
             }
         },
@@ -159,6 +162,30 @@ const Items = () => {
         },
     ];
 
+    const handleVisibilityToogleClick = async (itemId) => {
+        try {
+            const response = await fetch('http://localhost:8080/items/toggle-visibility/' + itemId, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(itemId),
+            });
+    
+            if (response.ok) {
+                console.log('Item updated successfully.');
+                setVisibilityState(prevState => ({
+                    ...prevState,
+                    [itemId]: !prevState[itemId],
+                }));
+            } else {
+                console.error('Error submitting updateItemById.');
+            }
+        } catch (error) {
+            console.error('An error occurred:', error);
+        }
+    };
+
     const handleClickOpen = (item) => {
         setSelectedItem(item)
         setEditedItem({
@@ -238,7 +265,14 @@ const Items = () => {
         const fetchData = async () => {
             const itemsData = await fetchItems();
             setItems(itemsData)
+
+            const initialVisibilityState = {};
+            itemsData.forEach((item) => {
+                initialVisibilityState[item.id] = item.visibility;
+            });
+            setVisibilityState(initialVisibilityState);
         };
+        
 
         fetchData();
     }, []);

@@ -43,10 +43,13 @@ public class ItemController {
     public void deleteItem(@PathVariable Long itemId) {
         itemService.deleteItemById(itemId);
     }
-    @PutMapping("{itemId}")
-    public Item updateRoom(@PathVariable Long itemId, @RequestBody Item item) {
-        itemService.updateItem(itemId, item);
-        return item;
+    @PutMapping("/{itemId}")
+    public Item updateItem(@PathVariable Long itemId, @RequestBody Item item) {
+        return itemService.updateItem(itemId, item);
     }
 
+    @PutMapping("/toggle-visibility/{itemId}")
+    public Item itemVisibilityToggle(@PathVariable Long itemId) {
+        return itemService.visibilityToggle(itemId);
+    }
 }

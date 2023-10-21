@@ -41,11 +41,23 @@ public class ItemService {
 
     public Item updateItem(Long itemId, Item updatedItem) {
         Item item = itemRepository.findById(itemId)
-                .orElseThrow(() -> new ItemNotFoundException("User not found with ID: " + itemId));
+                .orElseThrow(() -> new ItemNotFoundException("Item not found with ID: " + itemId));
 
         item.setName(updatedItem.getName());
         item.setPrice(updatedItem.getPrice());
         item.setImagePath(updatedItem.getImagePath());
+        item.setCategory(updatedItem.getCategory());
+        item.setDescription(updatedItem.getDescription());
+        item.setVisibility(updatedItem.isVisibility());
+
+        return itemRepository.save(item);
+    }
+
+    public Item visibilityToggle(Long itemId) {
+        Item item = itemRepository.findById(itemId)
+                .orElseThrow(() -> new ItemNotFoundException("Item not found with ID: " + itemId));
+
+        item.setVisibility(!item.isVisibility());
 
         return itemRepository.save(item);
     }
