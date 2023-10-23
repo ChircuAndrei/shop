@@ -23,6 +23,14 @@ public class Cart {
     @OneToMany
     @JoinColumn(name = "item_id")
     private List<Item> items = new ArrayList<>();
+    private double total;
+
+    public void updateTotal() {
+        this.total = items.stream()
+                .mapToDouble(Item::getPrice)
+                .sum();
+    }
+
 
     public void addItem(Item item) {
         items.add(item);
