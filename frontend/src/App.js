@@ -27,7 +27,6 @@ function App() {
       <ThemeProvider theme={theme}>
         <CssBaseline />
         <div className="app">
-          
           <Routes>
             <Route path="/" element={<ItemList />} />
             <Route
@@ -36,6 +35,7 @@ function App() {
                 <>
                   <Sidebar isSidebar={isSidebar} />
                   <main className="content">
+                    <Topbar setIsSidebar={setIsSidebar} />
                     <Routes>
                       <Route path="/dashboard" element={<Dashboard />} />
                       <Route path="/users" element={<Users />} />
