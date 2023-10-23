@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ItemTable from "../components/Shop/ItemTable";
 import Loading from "../components/Loading";
+import Topbar from "./global/Topbar";
 
 
 const fetchItems = () => {
@@ -37,7 +38,12 @@ const ItemList = () => {
         return <Loading />;
     }
     console.log(items[1].name);
-    return <ItemTable items={items} onDelete={handleDelete} />;
+    return (
+        <main className="content">
+            <Topbar />
+            <ItemTable items={items} onDelete={handleDelete} />
+        </main>
+    );
 };
 
 export default ItemList;
