@@ -15,7 +15,6 @@ import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
-import { boolean } from "yup";
 
 const fetchItems = async () => {
     try {
