@@ -37,7 +37,7 @@ const ItemList = () => {
     if (loading) {
         return <Loading />;
     }
-    console.log(items[1].name);
+    //console.log(items[1].name);
     return (
         <main className="content">
             <Topbar />

@@ -23,7 +23,7 @@ const AddItem = () => {
 
             if (response.ok) {
                 console.log('Form data submitted successfully.');
-                navigate("/items")
+                navigate("/admin/items")
             } else {
                 console.error('Error submitting addItem data.');
             }

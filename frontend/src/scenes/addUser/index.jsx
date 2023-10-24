@@ -26,7 +26,7 @@ const AddUser = () => {
 
             if (response.ok) {
                 console.log('Form data submitted successfully.');
-                navigate("/users")
+                navigate("/admin/users")
             } else {
                 console.error('Error submitting addUser data.');
             }

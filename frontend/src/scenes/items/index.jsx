@@ -267,7 +267,7 @@ const Items = () => {
     };
 
     const addItem = () => {
-        navigate("/add-item")
+        navigate("/admin/add-item")
     }
 
 

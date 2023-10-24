@@ -240,7 +240,7 @@ const Users = () => {
     }
 
     const addUser = () => {
-        navigate("/add-user")
+        navigate("/admin/add-user")
     }
 
     const handleDeleteSubmit = async (id) => {
