@@ -15,6 +15,7 @@ import Header from "../../components/Header";
 import { useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import CustomTextField from "../../components/CustomTextField";
 
 const fetchItems = async () => {
     try {
@@ -114,7 +115,7 @@ const Items = () => {
                                 <DialogContentText>
                                     Please input new details!
                                 </DialogContentText>
-                                <TextField
+                                <CustomTextField
                                     autoFocus
                                     margin="dense"
                                     id="name"
