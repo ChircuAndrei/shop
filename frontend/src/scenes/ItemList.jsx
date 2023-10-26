@@ -1,14 +1,19 @@
-import { useEffect, useState } from "react";
-import ItemTable from "../components/Shop/ItemTable";
+import {useEffect, useState} from "react";
+import {Navbar} from "../components/Navbar/Navbar";
 import Loading from "../components/Loading";
-import Topbar from "./global/Topbar";
+
+import Sidebar2 from "../components/Shop/Sidebar2";
+
+import {Col, Row} from "react-bootstrap";
+import ItemTable from "../components/Shop/ItemTable";
+import Filterbar from "../components/Shop/Filterbar";
 
 
 const fetchItems = () => {
     return fetch(`http://localhost:8080/items`).then((res) => res.json());
 };
 const deleteItem = (id) => {
-    return fetch(`/items/${id}`, { method: "DELETE" }).then((res) =>
+    return fetch(`/items/${id}`, {method: "DELETE"}).then((res) =>
         res.json()
     );
 };
@@ -35,13 +40,21 @@ const ItemList = () => {
     }, []);
 //sortBy, sortOrder
     if (loading) {
-        return <Loading />;
+        return <Loading/>;
     }
     //console.log(items[1].name);
     return (
+
         <main className="content">
-            <Topbar />
-            <ItemTable items={items} onDelete={handleDelete} />
+            <Navbar/>
+            <div style={{display: 'flex'}} className="justify-content-center mt-3 mb-3">
+                <Filterbar/>
+            </div>
+            <Row>
+                <Col>
+                    <ItemTable items={items}/>
+                </Col>
+            </Row>
         </main>
     );
 };

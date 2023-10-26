@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import {Link} from "react-router-dom";
+import {useState} from "react";
 import "./ItemTable.css";
-import { useNavigate, useParams } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import {Col, Container, Nav, Navbar, Row} from "react-bootstrap";
+import Sidebar2 from "./Sidebar2";
+
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 
-const ItemTable = ({ items, onDelete }) => {
+const ItemTable = ({items, onDelete}) => {
     const navigate = useNavigate();
     const [filterBy, setFilterBy] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
@@ -36,27 +41,21 @@ const ItemTable = ({ items, onDelete }) => {
         setCurrentPage(newPage);
     };
     return (
-        <div className="container text-center" >
-            <div className="row" >
-                {itemsToDisplay.map((item) => (
-                    <div className="col col-lg-2" key={item.id} style={{ marginTop: '20px' }} >
-
-                        <div className="card border-dark" key={item.id} >
-                            <img src={require(`./3.png`)} className="card-img-top" alt="picture" />
-                            <div className="card-body">
-                                <h5 className="card-title">{item.name}</h5>
-                                <p className="card-text">more text</p>
-                                <p><Link to={`/update/${item.id}`}>
-                                    <button type="button">Add to Cart</button>
-                                </Link></p>
-                                <p><a href="#" className="card-link">Card link</a></p>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-
+        <Row>
+            {items.map((item, index) => (
+                <Col key={index} style={{ marginTop: '20px', marginLeft: '10px' }} >
+                    <Card key={item.id} style={{width: '10rem'}}>
+                        {/* You can add your item-specific data here */}
+                        <Card.Img variant="top" src={require(`./3.png`)}/>
+                        <Card.Body>
+                            <Card.Title>{item.name}</Card.Title>
+                            <Card.Text>{item.description}</Card.Text>
+                            <Button variant="primary">Go somewhere</Button>
+                        </Card.Body>
+                    </Card>
+                </Col>
+            ))}
+        </Row>
     );
 
 }
