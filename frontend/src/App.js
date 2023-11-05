@@ -8,6 +8,7 @@ import Invoices from "./scenes/invoices";
 import Items from "./scenes/items";
 import AddUser from "./scenes/addUser";
 import AddItem from "./scenes/addItem";
+import Login from "./scenes/login";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import ItemList from "./scenes/ItemList";
@@ -31,6 +32,7 @@ function App() {
         <div className="app">
           <Routes>
             <Route path="/" element={<ItemList />} />
+            <Route path="/admin/login" element={<Login />} />
             <Route
               path="/admin/*"
               element={
